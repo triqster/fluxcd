@@ -1,0 +1,29 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nfs-client-provisioner
+  namespace: storage
+spec:
+  releaseName: nfs-client-provisioner
+  chart:
+    repository: https://charts.helm.sh/stable
+    name: nfs-client-provisioner
+    version: 1.2.11
+  values:
+    nfs:
+      path: /mnt/tank/nfs/k8s 
+      server: 192.168.4.50
+      mountOptions:
+      - nfsvers=4.0
+    storageClass:
+      archiveOnDelete: false
+      defaultClass: true
+      name: nfs
+    resources:
+      requests:
+        cpu: 50m
+        memory: 16Mi
+      limits:
+        cpu: 250m
+        memory: 64Mi
