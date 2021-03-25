@@ -1,0 +1,59 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: keycloak
+  namespace: sso
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: "./charts/keycloak"
+      sourceRef:
+        kind: GitRepository
+        name: codecentric-charts
+        namespace: flux-system
+  values:
+    volumePermissions:
+      enabled: true
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+      enabled: true
+      rules:
+      - host: sso.triqster.eu
+        paths:
+        - /
+      tls:
+      - secretName: keycloak-tls
+        hosts:
+        - sso.triqster.eu
+    extraEnv: |
+      - name: PROXY_ADDRESS_FORWARDING
+        value: "true"
+      - name: KEYCLOAK_USER
+        valueFrom:
+          secretKeyRef:
+            name: keycloak-admin-user
+            key: username
+      - name: KEYCLOAK_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: keycloak-admin-user
+            key: password
+    pgchecker:
+      resources:
+        limits:
+          cpu: "10m"
+          memory: "32Mi"
+    postgresql:
+      enabled: true
+      startupProbe:
+        enabled: true
+        failureThreshold: 20
+    resources:
+      requests:
+        cpu: 100m
+        memory: 1Gi
+      limits:
+        cpu: 500m
+        memory: 1Gi

@@ -1,0 +1,19 @@
+#apiVersion: source.toolkit.fluxcd.io/v1beta1
+#kind: HelmRepository
+#metadata:
+#  name: codecentric
+#  namespace: flux-system
+#spec:
+#  url: https://codecentric.github.io/helm-charts
+#  interval: 1h
+#---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: codecentric-charts
+  namespace: flux-system
+spec:
+  interval: 1h
+  ref:
+    branch: bump-postgres-in-keycloak
+  url: https://github.com/jonkerj/codecentric-charts.git

@@ -1,0 +1,43 @@
+apiVersion: v1
+data:
+    username: ENC[AES256_GCM,data:jgtujulkQ9QQE5pG,iv:KIBPlj6PXJaJS0YUolWv0qj4aLRjvWLzi/esz+OerwM=,tag:AsR6EZnmJrIX2vmZSUU+1A==,type:str]
+    password: ENC[AES256_GCM,data:4HGpSVKh3S3FPTEX3MNtaARPIjA=,iv:GOPUm2kbxireLZbu8dV5igQPSQLDRVPyCvJqkT6XlyU=,tag:4+FxMTrOcciFy4UjWoILRA==,type:str]
+kind: Secret
+metadata:
+    labels:
+        app.kubernetes.io/instance: keycloak
+        app.kubernetes.io/name: keycloak
+    name: keycloak-admin-user
+    namespace: sso
+type: Opaque
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-03-28T13:22:48Z"
+    mac: ENC[AES256_GCM,data:3FCZ7u41UWxc3XrnS10CNZnpTdq5Hg3QgawvmrbATkWdeoPO79OISBkxdAVlc/tAqtgt85lHtbJEnkD81YW3hunXsT57FD3cyLl9+Ml+M/DF330a3K3vyShKa4o5tS5JkZ/PPLDiqC5BWzHTo5jzNwAZ8LIZXcbmfL3Awd9VRXE=,iv:6tV3yeJ9vo1T3mlc7gNz7P+W0cMViAzsDSPuxBO7Wzk=,tag:f17+IU3254/Jbh1yrIhTUw==,type:str]
+    pgp:
+        - created_at: "2021-03-28T13:22:46Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA7z3cIrxPhdPARAAhGwsWkoLz5W2ZMiXpbpSRnucV8J8WWJWcMCeVsUdAgDQ
+            OGuB0ANTUuUP9sV0fdvY9WUuZ4T03T+wv/j2Cw9Vzz56GfxY/HgHygG6eFPe2T7q
+            TCC3JmFHMzuoB2EB4iDm8spiRhxyZGCIsEV4zSZKSBVvRYo93w66z4OSooffNEbA
+            WxeUI9St9IZExFNh0ve4xYxWncQpFm0dj0bebosLmeAtE04kkZF8Z9n3hPHKmN7w
+            swB5zxvnxVYNEIoMqsQ5LYd3MuYOGSgHFOKtdeZquHtBpWRR8/+DCv98Hges0VIk
+            VlMEIFzswKCY4v+VUv36BlsX9qP37TyJdrEMMoGzjC4QIl+dMb46dhMqfu4nZLmD
+            5h5Vt4cb/j7MAzTxlg56exc1Re1EuTEY3Far1jjTQGeUXn1KWgoLye9UWJpFBDc/
+            /GwQ6FSyG1MVgLmh++BD4YnnnQeLtjpDPvFl6LnZUA2yr+eAXv/IY+wErnrJQinH
+            ph53d5xlU4tRFqYWuZJds8w3pTks6+Wz1H59juFBYGv5u0sa9Bk+/FuIN1Jay+u/
+            3aZn1KHCVzxJCBUSMU2n3P/Gy4ESHfDdYSiyTdlNcGK/HWY5Vg9QOJOe9qaKRWaQ
+            k09ghGFcPLZUODN+0WBM9Q+uhfIk3oOb/FY8N39fyn0MzEzvGucYumlui2Kw0wfS
+            XgGmxWmdefc/2iOkvlIpaKQmCPaAKV6HWqraLdsmHpZf4o3v7dbqJcvzH2j64aWK
+            FFUTE3dk01jQDsM+/bQQ0ytFJMmCgo7luEmZ44pbUefuPCipeC5OLAY3WE79d7k=
+            =8e5E
+            -----END PGP MESSAGE-----
+          fp: B2E3944C452881488949063870EE7A2B58565AFE
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.0
