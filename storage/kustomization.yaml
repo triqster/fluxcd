@@ -4,3 +4,5 @@ resources:
 - namespace.yaml
 - helmrepository.yaml
 - helmrelease.yaml
+- rook-helmrelease.yaml
+- rook-helmrepository.yaml
