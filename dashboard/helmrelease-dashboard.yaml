@@ -20,7 +20,7 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt
         nginx.ingress.kubernetes.io/auth-response-headers: authorization
         nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
-        nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+        nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.sso.svc.cluster.local/oauth2/auth
         nginx.ingress.kubernetes.io/backend-protocol: HTTPS
       hosts: ['dashboard.triqster.eu']
       tls:
