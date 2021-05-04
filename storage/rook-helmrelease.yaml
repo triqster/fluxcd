@@ -9,8 +9,10 @@ spec:
   chart:
     spec:
       chart: rook-ceph
-      version: v1.5.9
+      version: v1.6.1
       sourceRef:
         kind: HelmRepository
         name: rook-release
         namespace: flux-system
+  values:
+    hostpathRequiresPrivileged: true
