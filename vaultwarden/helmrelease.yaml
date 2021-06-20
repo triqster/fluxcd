@@ -1,0 +1,50 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: bitwarden-rs
+  namespace: vaultwarden
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/bitwarden
+      version: 0.3.0
+      sourceRef:
+        kind: GitRepository
+        name: bitwarden-rs
+        namespace: flux-system
+  values:
+    bitwarden:
+      domain: https://vault.triqster.eu
+      invitations_allowed: true
+      signups_allowed: false
+    deployment:
+      image:
+        repository: vaultwarden/server
+        tag: 1.21.0
+      resources:
+        requests:
+          cpu: 50m
+          memory: 25Mi
+        limits:
+          cpu: 250m
+          memory: 100Mi
+    backup:
+      resources:
+        requests:
+          cpu: 50m
+          memory: 25Mi
+        limits:
+          cpu: 250m
+          memory: 256Mi
+    ingress:
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+      - vault.triqster.eu
+      paths:
+      - /
+      tls:
+      - secretName: bitwarden-tls
+        hosts:
+        - vault.triqster.eu
